@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="github.com/cylixlee/go-framework-playground/internal/proto/";
+
+message GreetRequest {
+  string ping = 1;
+}
+
+message GreetResponse {
+  string pong = 1;
+}
+
+service Greet {
+  rpc Ping(GreetRequest) returns(GreetResponse);
+}
