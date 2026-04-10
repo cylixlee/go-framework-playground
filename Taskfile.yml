@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+tasks:
+  serve:
+    desc: Start greet server
+    dir: "{{.ROOT_DIR}}/greet"
+    cmd: go run .
+    silent: true
+    interactive: true
