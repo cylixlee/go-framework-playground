@@ -1,0 +1,28 @@
+syntax = "v1"
+
+info (
+	title:   "go-zero/api"
+	desc:    "example Go Zero API project"
+	author:  "Cylix Lee"
+	email:   "cylix.lee@outlook.com"
+	version: "1.0"
+)
+
+type SignUpRequest {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Gender   string `json:"gender,options=male|female|secret,default=secret"`
+}
+
+type SignUpResponse {
+	Message string `json:"message"`
+}
+
+@server (
+	prefix: "api"
+)
+service user-api {
+	@handler SignUpHandler
+	post /user/signup (SignUpRequest) returns (SignUpResponse)
+}
+
