@@ -18,11 +18,23 @@ type SignUpResponse {
 	Message string `json:"message"`
 }
 
+type SignInRequest {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type SignInResponse {
+	OK bool `json:"ok"`
+}
+
 @server (
 	prefix: "api"
 )
 service user-api {
 	@handler SignUpHandler
 	post /user/signup (SignUpRequest) returns (SignUpResponse)
+
+	@handler SignInHandler
+	post /user/signin (SignInRequest) returns (SignInResponse)
 }
 

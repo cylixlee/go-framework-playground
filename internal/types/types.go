@@ -3,6 +3,15 @@
 
 package types
 
+type SignInRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type SignInResponse struct {
+	OK bool `json:"ok"`
+}
+
 type SignUpRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`

@@ -5,7 +5,10 @@ package logic
 
 import (
 	"context"
+	"database/sql"
+	"fmt"
 
+	"github.com/cylixlee/go-framework-playground/internal/model"
 	"github.com/cylixlee/go-framework-playground/internal/svc"
 	"github.com/cylixlee/go-framework-playground/internal/types"
 
@@ -26,8 +29,14 @@ func NewSignUpLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SignUpLogi
 	}
 }
 
-func (l *SignUpLogic) SignUp(req *types.SignUpRequest) (resp *types.SignUpResponse, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+func (l *SignUpLogic) SignUp(req *types.SignUpRequest) (*types.SignUpResponse, error) {
+	user := model.User{
+		Username: sql.NullString{String: req.Username, Valid: true},
+		Password: sql.NullString{String: req.Password, Valid: true},
+	}
+	_, err := l.svcCtx.UserModel.Insert(l.ctx, &user)
+	if err != nil {
+		return nil, err
+	}
+	return &types.SignUpResponse{Message: fmt.Sprintf("Hello %s", req.Username)}, nil
 }
