@@ -21,8 +21,3 @@ cmd/%/main.go: proto/%.proto
 		-m -c=false --name-from-filename
 	@mkdir -p "$(dir $@)"
 	@mv "$(addsuffix .go,$(basename $(notdir $<)))" "$@"
-
-clean:
-	@rm -rf cmd/
-	@rm -rf etc/
-	@rm -rf internal/
