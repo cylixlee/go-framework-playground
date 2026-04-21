@@ -1,2 +1,3 @@
-# go-framework-playground
-Playground for Go frameworks.
+# Go Framework Playground (Kratos)
+
+This branch contains a demo project using [Kratos](https://go-kratos.dev/).
